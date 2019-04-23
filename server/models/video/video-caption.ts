@@ -26,17 +26,17 @@ export enum ScopeNames {
   WITH_VIDEO_UUID_AND_REMOTE = 'WITH_VIDEO_UUID_AND_REMOTE'
 }
 
-@Scopes({
+@Scopes(() => ({
   [ScopeNames.WITH_VIDEO_UUID_AND_REMOTE]: {
     include: [
       {
         attributes: [ 'uuid', 'remote' ],
-        model: () => VideoModel.unscoped(),
+        model: VideoModel.unscoped(),
         required: true
       }
     ]
   }
-})
+}))
 
 @Table({
   tableName: 'videoCaption',
